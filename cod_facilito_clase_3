@@ -1,0 +1,52 @@
+def imprimir_texto_centralizado(texto, ancho_consola=80):
+    texto_centralizado = texto.center(ancho_consola)
+    return texto_centralizado
+def nuevo_usuario():
+    opcion=0
+    while opcion!=3:
+        print("-"*90)
+        print(imprimir_texto_centralizado("BIENVENIDO A EL PROGRAMA"))
+        print("-"*90)  
+        print("1.  Registrar nuevos usuarios \n")
+        print("2.  Listar usuarios \n")
+        print("3.  Editar usuarios \n") 
+        opcion = input("DIGITE LA OPCION QUE DESEE EJECUTAR\n")
+        if opcion == "1":
+            n = int(input("Ingrese el numero de personas que desea ingresar dentro del programa: \n"))
+            personas = []
+            for i in range(1, n + 1):
+                nombreusuario = input(f"Ingrese el nombre completo de la persona {i}: \n")
+                while len(nombreusuario) < 5 or len(nombreusuario) > 50:
+                    print("El nombre debe estar dentro del rango que es de 5 a 50 caracteres🙄")
+                    nombreusuario = input("Ingrese su nombre completo: \n")
+                apellidosusuario = input(f"Ingrese los apellidos de la persona {i} de manera ordenada: \n")
+                while len(apellidosusuario) < 5 or len(apellidosusuario) > 50:
+                    print("Los apellidos deben estar dentro del rango que es de 5 a 50 caracteres🙄")
+                    apellidosusuario = input("Ingrese sus apellidos de manera ordenada: \n")
+                numerotel = input(f"Ingrese el número de teléfono de la persona {i} (10 dígitos): \n")
+                while len(numerotel) != 10 or not numerotel.isdigit():
+                    print("El número de telefono debe tener 10 dígitos🙄")
+                    numerotel = input("Ingrese su numero de telefono (10 digitos): \n")
+                correousuario = input(f"Ingrese el correo electrónico de la persona {i}: \n")
+                while len(correousuario) < 5 or len(correousuario) > 50 or "@" not in correousuario:
+                    print("El correo electronico debe estar dentro del rango que es de 5 a 50 caracteres y contener '@'.🙄")
+                    correousuario = input("Ingrese su correo electronico: \n")
+                contador = i
+                dict_nuevo = {
+                    "ID de la persona": contador,
+                    "Nombre": nombreusuario,
+                    "Apellidos": apellidosusuario,
+                    "Número de teléfono": numerotel,
+                    "Correo electrónico": correousuario
+                }
+                personas.append(dict_nuevo)
+        elif opcion == "2":
+            print(" Selecciono la opcion numero 2")        
+            print("-"*60)
+            print(imprimir_texto_centralizado("\nListado de usuarios registrados:"))
+            print("-"*60) 
+            for usuario in personas:
+                print("-" * 60)
+                for dato, ingreso in usuario.items():
+                    print(f"{dato}: {ingreso}")
+nuevo_usuario()

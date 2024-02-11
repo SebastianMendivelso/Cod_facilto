@@ -1,0 +1,31 @@
+def imprimir_texto_centralizado(texto, ancho_consola=80):
+    texto_centralizado = texto.center(ancho_consola)
+    return texto_centralizado
+def nuevo_usuario():
+    print("-"*90)
+    print(imprimir_texto_centralizado("BIENVENIDO A EL PROGRAMA"))
+    print("-"*90)   
+    n = int(input("Ingrese el numero de personas que desea ingresar dentro del programa: \n"))
+    for i in range(n):
+        nombreusuario = input("Ingrese su nombxre completo: \n")
+        while len(nombreusuario) < 5 or len(nombreusuario) > 50:
+            print("El nombre debe estar dentro del rango que es de 5 a 50 caracteres🙄")
+            nombreusuario = input("Ingrese su nombre completo: \n")
+            print("-"*60)
+        apellidosusuario = input("Ingrese sus apellidos de manera ordenada: \n")
+        while len(apellidosusuario) < 5 or len(apellidosusuario) > 50:
+            print("Los apellidos deben estar dentro del rango que es de 5 a 50 caracteres🙄")
+            apellidosusuario = input("Ingrese sus apellidos de manera ordenada: \n")
+            print("-"*60)
+        numerotel = input("Ingrese su numero de telefono (10 digitos): \n")
+        while len(numerotel) != 10 or not numerotel.isdigit():
+            print("El numero de telefono debe tener 10 dígitos🙄")
+            numerotel = input("Ingrese su numero de teléfono (10 digitos): \n")
+            print("-"*60)
+        correousuario = input("Ingrese su correo electronico: \n")
+        while len(correousuario) < 5 or len(correousuario) > 50 or "@" not in correousuario:
+            print("El correo electronico debe estar dentro del rango que es de 5 a 50 caracteres y contener '@'.🙄")
+            correousuario = input("Ingrese su correo electronico: \n")
+        print(imprimir_texto_centralizado(f"\nUsuario valido:\nNombre: {nombreusuario}\nApellidos: {apellidosusuario}\nTelefono: {numerotel}\nCorreo electronico: {correousuario}"))
+        print("-"*60)
+nuevo_usuario()
